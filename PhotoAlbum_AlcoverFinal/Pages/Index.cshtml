@@ -1,0 +1,86 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="site.css">
+    <style>
+      body {
+        background-image: url("https://images.unsplash.com/photo-1502239608882-93b729c6af43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        font-family: "Century Gothic";
+      }
+
+      .home {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        color: white;
+        margin-top: 200px;
+        text-shadow: 2px 2px 4px #000000;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .home.visible {
+        opacity: 1;
+      }
+      
+      .subtitle {
+        text-align: center;
+        font-size: 24px;
+        font-family: "Brush Script MT", "Brush Script Std", cursive;
+        color: white;
+        margin-top: 20px;
+        text-shadow: 2px 2px 4px #000000;
+        letter-spacing: 3px;
+      }
+
+      .btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 2px 2px 4px #000000;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+  
+    </style>
+  </head>
+     <body>
+      <p class="home">An invitation to my world</p>
+      <p class="subtitle">Explore my photo album</p>
+      <a href="#" class="btn" data-page="/Gallery">View Gallery</a>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var homeEl = document.querySelector(".home");
+          setTimeout(function() {
+            homeEl.classList.add("visible");
+          }, 500);
+
+          var btnEl = document.querySelector(".btn");
+          var pageUrl = btnEl.dataset.page;
+          btnEl.setAttribute("href", pageUrl);
+        });
+      </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,395 @@
+﻿@page
+@model PhotoAlbum_AlcoverFinal.Pages.AnimeSeriesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+			body {
+			background-color: black;
+			text-align: center;
+			font-family: "Century Gothic";
+			}
+
+			h1 {
+			  font-size: 50px;
+			  margin-bottom: 50px;
+			  margin-top: 100px;
+			  color: white;
+			}
+	
+			.row {
+				display: flex;
+				justify-content: space-between;	
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+	
+			.picture {
+				flex: 0 0 23%;
+				margin-right: 10px;
+				position: relative;
+				overflow: hidden;
+				margin-bottom: 12px;
+			}
+	
+			.picture img {
+				display: block;
+				width: 350px;
+				height: 197px;
+				transition: transform 0.2s ease, filter 0.2s ease;
+				cursor: pointer;
+				filter: grayscale(100%);
+			}
+
+			.picture img:hover {
+				filter: grayscale(0%);
+				transform: scale(1.1);
+			}
+	
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+
+			.modal-content {
+				margin: 10% auto;
+				padding: 20px;
+				border: 0.1px solid #888;
+				width: 80%;
+				background-color: black;
+			}
+
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 20px;
+				font-weight: bold;
+				color: black;
+				cursor: pointer;
+				background-color: #f2f2f2;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+			}
+
+			.close:hover {
+				background-color: #d9d9d9;
+			}
+	
+			.video {
+				position: relative;
+				padding-bottom: 56.25%;
+				padding-top: 25px;
+				height: 0;
+			}
+
+			.video video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.description-container {
+				margin-top: 10px;
+				color: #fff;
+				background-color: rgba(255, 255, 255, 0.1); 
+				padding: 10px;
+			}
+
+			.description-container h2 {
+				font-size: 20px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			.description-container p {
+				font-size: 12px;
+				line-height: 1.5;
+			}
+
+			.description-container {
+			  background-color: rgba(255, 255, 255, 0.1); 
+			  padding: 10px;
+			}
+
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 20px;
+				font-weight: bold;
+				color: black;
+				cursor: pointer;
+				background-color: #f2f2f2;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+			}
+			.close:hover {
+				background-color: #d9d9d9;
+			}
+	</style>
+
+	<script>
+		function openModal(modalId) {
+			var modal = document.getElementById(modalId);
+			modal.style.display = "block";
+		}
+		function closeModal(modalId) {
+		var modal = document.getElementById(modalId);
+		var video = modal.querySelector('iframe');
+		video.src = video.src; // stop the video by resetting the source
+		modal.style.display = "none";
+	}
+
+	</script>
+
+</head>
+<body>
+	<h1>Anime Series</h1>
+	<div class="row">
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/1.jpg" alt="Picture 1" onclick="openModal('modal1')">
+			<div id="modal1" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal1')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/fXmAurh012s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Arcane</h2>
+					  <p>Enter the magical world of Arcane, a breathtaking series that immerses you in a fantastical, steampunk-inspired universe filled with action, intrigue, and unforgettable characters. 
+						  Set in the city of Piltover, this visually stunning adventure follows two sisters as they navigate the dangerous underbelly of their society and uncover shocking secrets that threaten 
+						  to tear their world apart. With incredible animation, epic battles, and a gripping storyline that will leave you on the edge of your seat, 
+						  Arcane is a must-watch for anyone who craves thrilling, immersive storytelling</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/2.jpg" alt="Picture 2" onclick="openModal('modal2')">
+			<div id="modal2" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal2')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/3aL0gDZtFbE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Your Lie in April</h2>
+					  <p>Get ready to be moved by Your Lie in April, an anime series that takes you on an emotional journey of a young pianist who finds hope and love 
+						  through the power of music, with a violinist who challenges him to see the world differently. With breathtaking performances and a heart-wrenching
+						  storyline, this series is a must-watch for anyone who loves art, friendship, and the triumph of the human spirit..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/3.jpg" alt="Picture 3" onclick="openModal('modal3')">
+			<div id="modal3" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal3')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/9BxbETVKSLk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Death Note</h2>
+					  <p>Get ready for a mind-bending ride with Death Note, an anime series that follows a high school student who gains the power to kill anyone by writing
+						  their name in a notebook. As he sets out to create a crime-free world, a brilliant detective is hot on his heels, leading to a thrilling game of wits. 
+						  With complex themes of morality and power, unexpected twists, and unforgettable characters, Death Note is a must-watch for anyone who loves 
+						  psychological thrillers..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/4.jpg" alt="Picture 4" onclick="openModal('modal4')">
+			<div id="modal4" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal4')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/S8_YwFLCh4U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>One Piece</h2>
+					  <p>Set sail for adventure with One Piece, an anime series about a young pirate named Luffy who seeks to become king of the pirates and find the legendary 
+						  treasure known as the One Piece. With a crew of lovable characters, epic battles, and secrets to uncover, this series will capture your imagination
+						  and keep you entertained. Whether you're a fan of action, adventure, or just good storytelling, 
+						  One Piece is a must-watch anime that will leave you craving for more.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/5.jpg" alt="Picture 5" onclick="openModal('modal5')">
+			<div id="modal5" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal5')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/BUfSen2rYQs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Violet evergarden</h2>
+					  <p>Get ready to be moved by Violet Evergarden, an emotionally captivating anime series that follows a former child soldier who becomes an Auto Memories Doll,
+						  writing letters on behalf of those who are unable to express their feelings in words. With stunning animation and a touching storyline, the series 
+						  explores themes of loss, love, and self-discovery, as Violet grapples with her past and touches the lives of those around her in profound ways. 
+						  If you're looking for a series that will tug at your heartstrings and leave you feeling uplifted, Violet Evergarden is a
+						  must-watch anime that will stay with you long after the final episode.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/6.jpg" alt="Picture 5" onclick="openModal('modal6')">
+			<div id="modal6" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal6')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/a9tq0aS5Zu8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Demon Slayer</h2>
+					  <p>Get ready for an adrenaline-fueled ride with Demon Slayer, an anime series about a young boy named Tanjiro who seeks revenge on demons who killed his 
+						  family and saved his sister. With stunning visuals, intense fight scenes, and a richly detailed world, the series follows Tanjiro and his comrades 
+						  as they battle powerful demons and unravel the mysteries of their world. As they discover the true meaning of courage and sacrifice, 
+						  they forge powerful bonds of family and friendship. If you're a fan of action, horror, or just good storytelling, Demon Slayer is a
+						  must-watch anime that will leave you craving for more.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/7.jpg" alt="Picture 7" onclick="openModal('modal7')">
+			<div id="modal7" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal7')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/MGRm4IzK1SQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Attack on Titan</h2>
+					  <p>Get ready for a dark and thrilling adventure with Attack on Titan, an anime series about humanity's fight for survival against giant humanoid creatures 
+						  called Titans. Follow Eren and his comrades as they battle to protect their loved ones and uncover the mysteries of the Titans, all while exploring themes 
+						  of human nature and the price of freedom. With jaw-dropping action scenes, complex characters, and a riveting storyline, Attack on Titan will keep you on 
+						  the edge of your seat and gasping for breath. Don't miss out on this must-watch anime that will leave you craving for more.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/8.jpg" alt="Picture 8" onclick="openModal('modal8')">
+			<div id="modal8" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal8')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/YisoQZ5L684" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Detective Conan</h2>
+					  <p>Get ready for an iconic and thrilling anime series with Detective Conan, the story of a high school detective prodigy who is transformed into a child after
+						  being poisoned by a criminal organization. Follow Conan as he continues to solve crimes and unravel complex mysteries, all while searching for a cure to
+						  return him to his former self. With a brilliant cast of characters, intricate plot lines, and gripping suspense, Detective Conan is a must-watch anime
+						  that will keep you guessing until the very end. If you're a fan of crime, mystery, and brain-teasing puzzles, this classic anime series is not to be missed.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/9.jpg" alt="Picture 9" onclick="openModal('modal9')">
+			<div id="modal9" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal9')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/kqBNQEUI8dM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Made in Abyss</h2>
+					  <p>Get ready for an immersive and breathtaking adventure with Made in Abyss, an anime series about a young orphan girl and her robot friend as they journey into 
+						  the depths of a massive and mysterious chasm known as the Abyss. With deadly creatures, treacherous terrain, and dark secrets lurking within, the series
+						  follows their perilous journey and encounters with a colorful cast of characters. With stunning animation, vivid world-building, and an emotionally gripping 
+						  storyline, Made in Abyss is a must-watch anime that explores themes of perseverance, sacrifice, and curiosity. If you're a fan of fantasy and adventure, 
+						  this anime series is sure to captivate and enchant you.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/10.jpg" alt="Picture 10" onclick="openModal('modal10')">
+			<div id="modal10" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal10')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/kgNkGohA20k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Assassination Classroom</h2>
+					  <p>Step into the world of Assassination Classroom, an anime series that will have you laughing, gasping, and holding on to the edge of your seat. Follow a 
+						  group of talented student assassins as they try to take down their target, their own teacher, who just happens to be capable of destroying the world.
+						  With a perfect blend of humor and action, this series will keep you on the edge of your seat as the students navigate their way through high school
+						  while also trying to save the world. Filled with non-stop excitement, unexpected twists, and lovable characters, Assassination Classroom 
+						  is a must-watch for anyone looking for a thrilling and entertaining anime experience.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/11.jpg" alt="Picture 11" onclick="openModal('modal11')">
+			<div id="modal11" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal11')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/v4yLeNt-kCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Chainsaw Man</h2>
+					  <p>Are you ready for a wild ride filled with horror, action, and unexpected plot twists? Then look no further than Chainsaw Man, a dark and thrilling 
+						  anime series that will keep you on the edge of your seat. Follow the story of Denji, a devil hunter who merges with his pet devil to become the
+						  unstoppable Chainsaw Man. With intense and gruesome action scenes, this anime will take you on a journey through a world filled with danger, 
+						  violence, and demons. If you're a fan of the horror or thriller genres, then you won't want to miss this unforgettable series. Get ready to 
+						  experience the adrenaline-pumping action and mind-bending twists that make Chainsaw Man a must-watch for any anime fan.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeSeries/12.jpg" alt="Picture 12" onclick="openModal('modal12')">
+			<div id="modal12" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal12')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/Pi_sIP-wjC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Bleach</h2>
+					  <p>Are you ready for an adrenaline-fueled anime adventure? Then look no further than Bleach! Follow the story of Ichigo Kurosaki, a high school 
+						  student who becomes a powerful Soul Reaper and takes on supernatural threats to protect the world. With epic battles, complex characters, 
+						  and a rich world steeped in mythology, this anime is sure to keep you on the edge of your seat. Explore a world filled with ghosts, demons,
+						  and ancient lore as you embark on a thrilling journey with Ichigo and his allies. Whether you're a fan of action, fantasy, or mythology,
+						  Bleach has something for everyone. So grab your sword and get ready for an unforgettable ride through a world of danger and adventure!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

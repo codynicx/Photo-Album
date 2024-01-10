@@ -1,0 +1,390 @@
+﻿@page
+@model PhotoAlbum_AlcoverFinal.Pages.AnimeMoviesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Album</title>
+	<style>
+			body {
+			background-color: black;
+			text-align: center;
+			font-family: "Century Gothic";
+			}
+
+			h1 {
+			  font-size: 50px;
+			  margin-bottom: 50px;
+			  margin-top: 100px;
+			  color: white;
+			}
+	
+			.row {
+				display: flex;
+				justify-content: space-between;	
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+	
+			.picture {
+				flex: 0 0 23%;
+				margin-right: 10px;
+				position: relative;
+				overflow: hidden;
+				margin-bottom: 12px;
+			}
+	
+			.picture img {
+				display: block;
+				width: 350px;
+				height: 197px;
+				transition: transform 0.2s ease, filter 0.2s ease;
+				cursor: pointer;
+				filter: grayscale(100%);
+			}
+
+			.picture img:hover {
+				filter: grayscale(0%);
+				transform: scale(1.1);
+			}
+	
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+
+			.modal-content {
+				margin: 10% auto;
+				padding: 20px;
+				border: 0.1px solid #888;
+				width: 80%;
+				background-color: black;
+			}
+
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 20px;
+				font-weight: bold;
+				color: black;
+				cursor: pointer;
+				background-color: #f2f2f2;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+			}
+
+			.close:hover {
+				background-color: #d9d9d9;
+			}
+	
+			.video {
+				position: relative;
+				padding-bottom: 56.25%;
+				padding-top: 25px;
+				height: 0;
+			}
+
+			.video video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.description-container {
+				margin-top: 10px;
+				color: #fff;
+				background-color: rgba(255, 255, 255, 0.1); 
+				padding: 10px;
+			}
+
+			.description-container h2 {
+				font-size: 20px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			.description-container p {
+				font-size: 12px;
+				line-height: 1.5;
+			}
+
+			.description-container {
+			  background-color: rgba(255, 255, 255, 0.1); 
+			  padding: 10px;
+			}
+
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 20px;
+				font-weight: bold;
+				color: black;
+				cursor: pointer;
+				background-color: #f2f2f2;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+			}
+			.close:hover {
+				background-color: #d9d9d9;
+			}
+	</style>
+
+	<script>
+		function openModal(modalId) {
+			var modal = document.getElementById(modalId);
+			modal.style.display = "block";
+		}
+		function closeModal(modalId) {
+		var modal = document.getElementById(modalId);
+		var video = modal.querySelector('iframe');
+		video.src = video.src; // stop the video by resetting the source
+		modal.style.display = "none";
+	}
+
+	</script>
+
+</head>
+<body>
+	<h1>Anime Movies</h1>
+	<div class="row">
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/1.jpg" alt="Picture 1" onclick="openModal('modal1')">
+			<div id="modal1" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal1')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/Sup4GUf8vLo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Nezha</h2>
+					  <p>Get ready for an epic adventure with "Nezha," a rebellious young deity with fiery powers who must face his destiny and battle
+						  powerful demons in the mortal world. Packed with thrilling action, stunning animation, and a heartwarming message about self-discovery,
+						  this Chinese fantasy adventure is a must-watch for fans of epic tales and breathtaking animation.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/2.jpg" alt="Picture 2" onclick="openModal('modal2')">
+			<div id="modal2" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal2')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/4vPeTSRd580" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Grave of the Fireflies</h2>
+					  <p>Prepare to have your heart ripped out with this heartbreaking tale of two siblings struggling to survive amidst the devastation 
+						  of World War II. With stunning visuals and a haunting soundtrack, Grave of the Fireflies is a powerful and emotional journey 
+						  that will leave you both shattered and moved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/3.jpg" alt="Picture 3" onclick="openModal('modal3')">
+			<div id="modal3" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal3')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/ByXuk9QqQkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Spirited Away</h2>
+					  <p>Experience the magic of "Spirited Away", a captivating anime movie that follows a young girl named Chihiro on a mystical adventure 
+						  to rescue her parents from a perilous spell. With breathtaking animation, an enchanting soundtrack, and a heartwarming message, 
+						  this film is a true masterpiece that will transport you to a world of wonder and delight. Get ready to be swept away by the 
+						  spellbinding tale of "Spirited Away".</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/4.jpg" alt="Picture 4" onclick="openModal('modal4')">
+			<div id="modal4" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal4')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/0pVkiod6V0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Whisper of the Heart</h2>
+					  <p>Discover the touching story of "The Whisper of the Heart," an anime movie about a young girl named Shizuku who finds her passion 
+						  for writing and learns valuable life lessons. Through her journey, she finds love, friendship, and the courage to follow her dreams. 
+						  With its delightful characters, captivating animation, and an enchanting soundtrack, this film is a heartwarming coming-of-age tale 
+						  that will leave you feeling inspired.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/5.jpg" alt="Picture 5" onclick="openModal('modal5')">
+			<div id="modal5" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal5')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/W71mtorCZDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>The Tale of Princess Kaguya</h2>
+					  <p>Experience the captivating story of "The Tale of Princess Kaguya," an anime movie about a mysterious princess found inside a bamboo 
+						  stalk who must choose between duty and love. With its stunning hand-drawn animation, mesmerizing soundtrack, and enchanting story 
+						  that explores themes of love, loss, and self-discovery, this film is a true masterpiece that will transport you to a magical world 
+						  of wonder and beauty. Get ready to be enchanted by the unforgettable tale of "The Tale of Princess Kaguya.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/6.jpg" alt="Picture 5" onclick="openModal('modal6')">
+			<div id="modal6" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal6')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/9nzpk_Br6yo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>From Up on Poppy Hill</h2>
+					  <p>Get ready for a heartwarming journey to 1960s Japan in 'From Up on Poppy Hill.' Follow Umi and Shun, two high school students who 
+						  join forces to save their school's beloved clubhouse from demolition. Along the way, they form an unbreakable bond and unearth a 
+						  family secret that tests their loyalty. With stunning animation and a touching story of love, family, and tradition, this movie
+						  is a must-see for those who crave a charming slice-of-life drama that captures the magic of everyday life.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/7.jpg" alt="Picture 7" onclick="openModal('modal7')">
+			<div id="modal7" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal7')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/iwROgK94zcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Howl's Moving Castle</h2>
+					  <p>Get swept away in a magical world of wizards and witches with "Howl's Moving Castle." When a young girl named Sophie is cursed by a 
+						  wicked sorceress, she seeks refuge in the moving castle of the enigmatic wizard Howl. As she embarks on a thrilling adventure to break 
+						  the curse, she discovers a plot to start a war and must team up with an array of captivating characters to stop it. With stunning animation,
+						  a whimsical score, and a captivating story full of humor and heart, "Howl's Moving Castle" is a must-watch for anyone who loves a 
+						  fantastical tale that will transport them to another world.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/8.jpg" alt="Picture 8" onclick="openModal('modal8')">
+			<div id="modal8" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal8')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/C1e1bT0Xjvw"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Perfect Blue</h2>
+					  <p>In the dark and twisted world of "Perfect Blue," a former pop star turned actress must confront her stalker and fight for her sanity as
+						  she becomes haunted by her past. With mesmerizing visuals, a haunting score, and a story that keeps you guessing until the very end, 
+						  this psychological thriller will take you on a thrilling ride through obsession, fame, and the blurred lines between reality and fiction. 
+						  Get ready for a gripping and unforgettable journey into the human psyche with "Perfect Blue."</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/9.jpg" alt="Picture 9" onclick="openModal('modal9')">
+			<div id="modal9" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal9')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/eWnTeKEsDlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>The Girl Who Leapt Through Time</h2>
+					  <p>"oin Makoto, a high school student with the ability to travel through time, on a heart-pumping journey of self-discovery and consequences. 
+						  With stunning animation, an inspiring story, and a beautiful soundtrack, "The Girl Who Leapt Through Time" is a thrilling adventure through 
+						  the power of second chances. Don't miss out on this captivating tale of friendship, love, and the risks of tampering with time.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/10.png" alt="Picture 10" onclick="openModal('modal10')">
+			<div id="modal10" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal10')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/8xLji7WsW0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Wolf Children</h2>
+					  <p>Experience a heartwarming tale of a mother's unconditional love and her children's extraordinary journey in "Wolf Children." After falling 
+						  in love with a mysterious man who can transform into a wolf, Hana gives birth to two unique children who inherit their father's ability.
+						  As they navigate the challenges of growing up, Hana must face the daunting task of raising her half-human, half-wolf children alone. 
+						  With stunning animation, a touching story, and a beautiful score, "Wolf Children" is a must-watch for anyone who loves a story about
+						  the power of family and the strength of love.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/11.jpg" alt="Picture 11" onclick="openModal('modal11')">
+			<div id="modal11" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal11')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/jjmrxqcQdYg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>Marnie Was There</h2>
+					  <p>Join Anna on a magical journey of self-discovery in "When Marnie Was There." Lonely and isolated, Anna stumbles upon a mysterious 
+						  mansion and meets a girl named Marnie who becomes her closest friend. Together, they uncover secrets about Marnie's past that challenge 
+						  everything Anna thought she knew. With stunning animation and a touching story about the power of friendship, "When Marnie Was There" 
+						  is a must-watch for anyone who loves a good mystery and a heartwarming coming-of-age tale.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/AnimeMovies/12.jpg" alt="Picture 12" onclick="openModal('modal12')">
+			<div id="modal12" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal12')">&times;</span>
+					<div class="video">
+							<iframe width="980" height="550" src="https://www.youtube.com/embed/RzSpDgiF5y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	
+						</div>
+					<div class="description-container">
+					  <h2>The Wind Rises</h2>
+					  <p>Experience the soaring highs and heartbreaking lows of a young aviation enthusiast in pre-World War II Japan as he follows his dreams 
+						  to design airplanes. But as his ambitions take flight, he must face the harsh realities of war, loss, and love. With stunning animation 
+						  and a touching story about the power of imagination, "The Wind Rises" is a must-watch for anyone who loves aviation, history, 
+						  and the magic of dreams.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,497 @@
+﻿@page
+@model PhotoAlbum_AlcoverFinal.Pages.PlacesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Album</title>
+	<style>
+
+		body {
+			background-color: black;
+			text-align: center;
+			font-family: "Century Gothic";
+		}
+
+		h1 {
+			font-size: 50px;
+			margin-bottom: 50px;
+			margin-top: 100px;
+			color: white;
+		}
+
+		.row {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 20px;
+		}
+		.picture {
+		  flex: 0 0 23%;
+		  margin-right: 10px;
+		  position: relative;
+		  overflow: hidden;
+		  margin-bottom: 12px;
+		}
+
+		.picture img {
+		  display: block;
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover;
+		  cursor: pointer;
+		  transition: transform 0.2s ease, filter 0.2s ease;
+		}
+
+		img:not(.modal-content img):not(:hover) {
+			cursor: pointer;
+			filter: grayscale(100%);
+		}
+
+		img:not(.modal-content img):hover {
+			filter: grayscale(0%);
+			transform: scale(1.1);
+		}
+
+		.modal {
+			justify-content: center;
+			align-items: flex-start;
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.modal-content {
+			width: 1000px;
+			height: 600px;
+			background-color: rgba(255, 255, 255, 0.9);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: 1px solid black;
+			margin: 20px;
+			padding-top: 0;
+		}
+
+		.modal-content .picture {
+			flex: 1;
+			margin-right: 0;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding: 0;
+			line-height: 0;
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+		}
+
+		.modal-content img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			max-width: 1000px;
+			max-height: 1000px;
+			object-fit: cover;
+		}
+
+
+		.description {
+			font-size: 12px;
+			line-height: 1.5;
+			text-align: center;
+			color: white;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			padding: 10px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 100%;
+		}
+
+		.close {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		z-index: 2;
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.2);
+		border: none;
+		width: 25px;
+		height: 25px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: none;
+		}
+
+		.close:hover {
+		background-color: transparent;
+		color: black;
+		}
+	</style>
+
+	<script>
+		function openModal(modalId) {
+			var modal = document.getElementById(modalId);
+			modal.style.display = "block";
+		}
+		function closeModal(modalId) {
+			var modal = document.getElementById(modalId);
+			modal.style.display = "none";
+		}
+	</script>
+</head>
+<body>
+	<h1>Travel Destination</h1>
+	<div class="row">
+		<div class="picture">
+			<img src="Resources/images/Places/1.jpg" alt="Picture 1" onclick="openModal('modal1')">
+			<div id="modal1" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal1')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/1.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Switzerland</h2>
+							<p>Switzerland is a beautiful and enchanting country, known for its breathtaking 
+							mountain landscapes, stunning lakes, and charming towns. The country's
+							natural beauty is second to none, with the Swiss Alps providing a perfect 
+							backdrop for outdoor activities such as skiing, hiking, and mountaineering</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/2.jpg" alt="Picture 2" onclick="openModal('modal2')">
+			<div id="modal2" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal2')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/2.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Canada</h2>
+							<p>Canada is a beautiful country with breathtaking landscapes and friendly people. Its economy 
+								is highly diversified and ranks among the largest in the world, with industries such as natural 
+								resources, manufacturing, and technology leading the way. The country also places a strong emphasis 
+								on education and healthcare, making it a great place to live and work.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/3.jpg" alt="Picture 3" onclick="openModal('modal3')">
+			<div id="modal3" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal3')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/3.jpg" alt="Picture 3">
+						<div class="description">
+							<h2>Ireland</h2>
+							<p>Ireland is a stunning island nation located in the North Atlantic, known for its breathtaking landscapes,
+								rich history, and vibrant culture. While the northern lights can be seen in the far north of the country
+								on occasion, they are not a regular occurrence as Ireland is not located far enough north to see them frequently.
+								Nonetheless, Ireland is still a fantastic destination for those seeking natural beauty and warm hospitality.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/4.jpg" alt="Picture 4" onclick="openModal('modal4')">
+			<div id="modal4" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal4')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/4.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Netherlands</h2>
+							<p>The Netherlands is a small but enchanting country, known for its picturesque windmills, 
+							colorful tulip fields, and charming canals. The country's landscapes are unique 
+							and breathtaking, with flat polders, rolling dunes, and idyllic beaches</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/5.jpg" alt="Picture 5" onclick="openModal('modal5')">
+			<div id="modal5" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal5')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/5.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Japan</h2>
+							<p>Japan is a fascinating and enchanting country, known for its unique culture, 
+							delicious cuisine, and cutting-edge technology. The country's landscapes are 
+							diverse and stunning, with towering mountains, idyllic countryside, and pristine beaches</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/6.jpg" alt="Picture 6" onclick="openModal('modal6')">
+			<div id="modal6" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal6')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/6.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Hawaii</h2>
+							<p>Hawaii is a paradise on earth, known for its stunning natural beauty, vibrant culture, and warm hospitality. 
+							The islands are blessed with some of the world's most beautiful beaches, crystal-clear waters, and lush green forests</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/7.jpg" alt="Picture 7" onclick="openModal('modal7')">
+			<div id="modal7" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal7')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/7.jpg" alt="Picture 7">
+						<div class="description">
+							<h2>Batanes</h2>
+							<p>Batanes is a hidden gem in the northernmost part of the Philippines, 
+							known for its breathtaking natural landscapes, rich cultural heritage, and warm hospitality. 
+							The islands are blessed with rugged coastlines, rolling hills, and pristine beaches</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/8.jpg" alt="Picture 8" onclick="openModal('modal8')">
+			<div id="modal8" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal8')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/8.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>South Korea</h2>
+							<p>South Korea is a fascinating and dynamic country, known for its rich cultural heritage, delicious cuisine, and cutting-edge technology. 
+							The country's landscapes are diverse, ranging from bustling cities to idyllic countryside and scenic coastlines</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/9.jpg" alt="Picture 9" onclick="openModal('modal9')">
+			<div id="modal9" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal9')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/9.jpg" alt="Picture 9">
+						<div class="description">
+							<h2>Europe</h2>
+							<p>Europe is a diverse and fascinating continent, known for its rich history, stunning architecture, and diverse cultures. 
+							The continent offers a vast array of landscapes, from rolling hills to majestic mountains, pristine lakes, and rugged coastlines</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/10.jpg" alt="Picture 10" onclick="openModal('modal10')">
+			<div id="modal10" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal10')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/10.jpg" alt="Picture 10">
+						<div class="description">
+							<h2>Paris</h2>
+							<p>Paris is a romantic and enchanting city, known for its stunning architecture, 
+							rich history, and world-class art and culture. The city is home to some of the 
+							world's most iconic landmarks, including the Eiffel Tower, Notre-Dame Cathedral, 
+							and the Louvre Museum</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/11.jpg" alt="Picture 11" onclick="openModal('modal11')">
+			<div id="modal11" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal11')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/11.jpg" alt="Picture 2">
+						<div class="description">
+							<h2>Palawan</h2>
+							<p>Palawan is a tropical paradise located in the Philippines, known for its crystal-clear waters, pristine beaches, and stunning limestone cliffs. The province is home to several breathtaking natural wonders, 
+							including the Puerto Princesa Subterranean River National Park, El Nido, and Coron Island</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/12.jpg" alt="Picture 12" onclick="openModal('modal12')">
+			<div id="modal12" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal12')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/12.jpg" alt="Picture 12">
+						<div class="description">
+							<h2>Boracay</h2>
+							<p>Boracay is a must-visit destination for anyone seeking natural beauty, vibrant nightlife, and a tropical atmosphere. Its unique blend of stunning beaches, 
+							thrilling water sports, and welcoming people make it a truly unforgettable place to visit</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/13.jpg" alt="Picture 13" onclick="openModal('modal13')">
+			<div id="modal13" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal13')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/13.jpg" alt="Picture 13">
+						<div class="description">
+							<h2>China</h2>
+							<p>China is a vast and diverse country, known for its rich history, stunning natural landscapes, and bustling cities. 
+							The country offers a wide range of cultural attractions, including historic landmarks, temples, and museums, as well as unique customs and traditions,
+							such as calligraphy, tea ceremonies, and martial arts</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/14.jpg" alt="Picture 14" onclick="openModal('modal14')">
+			<div id="modal14" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal14')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/14.jpg" alt="Picture 14">
+						<div class="description">
+							<h2>Bali</h2>
+							<p>Bali is a tropical paradise located in Indonesia, known for its stunning beaches, lush rice terraces, and unique Hindu culture. 
+							The island is famous for its Balinese architecture, which features intricately carved temples and traditional houses with thatched roofs</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/15.jpg" alt="Picture 15" onclick="openModal('modal15')">
+			<div id="modal15" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal15')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/15.jpg" alt="Picture 15">
+						<div class="description">
+							<h2>Sydney</h2>
+							<p>Sydney is a vibrant and cosmopolitan city located in Australia, known for its stunning harbor, iconic landmarks, and world-class dining and entertainment. 
+							The city is home to the Sydney Opera House, a UNESCO World Heritage Site, as well as the Sydney Harbour Bridge, which offers breathtaking views of the harbor</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/16.jpg" alt="Picture 16" onclick="openModal('modal16')">
+			<div id="modal16" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal16')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/16.jpg" alt="Picture 16">
+						<div class="description">
+							<h2>Maldives</h2>
+							<p>The Maldives is a tropical paradise located in the Indian Ocean, known for its stunning beaches,
+							crystal-clear waters, and luxurious resorts. The country is made up of over 1,000 coral islands, each with its own unique charm and beauty.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/17.jpg" alt="Picture 17" onclick="openModal('modal17')">
+			<div id="modal17" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal17')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/17.jpg" alt="Picture 17">
+						<div class="description">
+							<h2>Dubai</h2>
+							<p>Dubai is a city and emirate located in the United Arab Emirates, known for its futuristic architecture, world-class shopping, and luxurious lifestyle.
+							The city is home to a number of iconic landmarks, such as the Burj Khalifa, the world's tallest building, and the Palm Jumeirah, an artificial island shaped like a palm tree</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/18.jpg" alt="Picture 18" onclick="openModal('modal18')">
+			<div id="modal18" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal18')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/18.jpg" alt="Picture 18">
+						<div class="description">
+							<h2>New York</h2>
+							<p>New York City, also known as the Big Apple, is a bustling metropolis located in the northeastern region of the United States. It is known for its iconic 
+							landmarks, such as the Statue of Liberty, Empire State Building, and Central Park.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/19.jpg" alt="Picture 19" onclick="openModal('modal19')">
+			<div id="modal19" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal19')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/19.jpg" alt="Picture 19">
+						<div class="description">
+							<h2>Singapore</h2>
+							<p>Singapore is a small island city-state located in Southeast Asia, known for its modern skyline, lush greenery, and diverse culture. The city is home to a 
+							range of world-renowned attractions, such as the Marina Bay Sands, Gardens by the Bay, and Sentosa Island.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="picture">
+			<img src="Resources/images/Places/20.jpg" alt="Picture 20" onclick="openModal('modal20')">
+			<div id="modal20" class="modal">
+				<div class="modal-content">
+					<span class="close" onclick="closeModal('modal20')">&times;</span>
+					<div class="picture">
+						<img src="Resources/images/Places/20.jpg" alt="Picture 20">
+						<div class="description">
+							<h2>Morocco</h2>
+							<p>Morocco is a North African country with a rich history, vibrant culture, and stunning natural beauty. The country is known for its ancient medinas, 
+							colorful souks, and traditional architecture, as well as its beautiful beaches, lush valleys, and majestic mountains.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

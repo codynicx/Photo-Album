@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PhotoAlbum_Alcover</title>
+    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PhotoAlbum_AlcoverFinal.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-10 box-shadow mb-3">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="navbarNav"> 
+              <ul class="navbar-nav navbar-brand text-white" asp-area="" asp-page="/Index" style="justify-content: flex-end;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                   <path d="M7.5 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                   <path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h9A1.5 1.5 0 0 1 14 3.5v7a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 10.5v-7zm4 .5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg> My Photo Album              
+                <li class="nav-item" style="margin-left: auto;">
+                  <a class="nav-link text-white active" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/AnimeMovies">Anime Movies</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/AnimeSeries">Anime Series</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/Places">Travel Destination</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/SelfPortrait">Self Portrait</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/Family">Family</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" style="font-size: 12px; font-weight: 100;" asp-area="" asp-page="/Friends">Friends</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
